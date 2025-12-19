@@ -5,7 +5,7 @@ For more information read [The Limine Boot Protocol](https://codeberg.org/Limine
 
 Example Usage:
 ```rust
-onst REVISION: u64 = 4;
+const REVISION: u64 = 4;
 
 #[used]
 #[unsafe(link_section = ".limine_reqs")]
