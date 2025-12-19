@@ -115,13 +115,23 @@ impl MemoryMapRequest {
 pub struct MemoryMapResponse {
     revision: u64,
     entry_count: u64,
-    entries: *const MemoryMapEntry
+    entries: *const *const MemoryMapEntry
 }
 
 impl MemoryMapResponse {
-    pub fn get_entries(&self) -> &[MemoryMapEntry] {
+    fn get_entries(&self) -> &[*const MemoryMapEntry] {
         unsafe {
             from_raw_parts(self.entries, self.entry_count as usize)
+        }
+    }
+
+    pub fn get_entry(&self, entry: usize) -> Option<&MemoryMapEntry> {
+        if (0..self.entry_count).contains(&(entry as u64)) {
+            unsafe {
+                self.get_entries()[entry].as_ref()
+            }
+        } else {
+            None
         }
     }
 }
@@ -183,17 +193,26 @@ impl FramebufferRequest {
 
 
 #[repr(C, align(8))]
-#[derive(Debug)]
 pub struct FramebufferResponse {
     revision: u64,
     entry_count: u64,
-    entries: *const Framebuffer
+    entries: *const *const Framebuffer
 }
 
 impl FramebufferResponse {
-    pub fn get_entries(&self) -> &[Framebuffer] {
+    fn get_framebuffers(&self) -> &[*const Framebuffer] {
         unsafe {
             from_raw_parts(self.entries, self.entry_count as usize)
+        }
+    }
+
+    pub fn get_framebuffer(&self, index: usize) -> Option<&Framebuffer> {
+        if (0..self.entry_count).contains(&(index as u64)) {
+            unsafe {
+                self.get_framebuffers()[index].as_ref()
+            }
+        } else {
+            None
         }
     }
 }
@@ -219,13 +238,23 @@ pub struct Framebuffer {
 
     //Response revision 1
     pub mode_count: u64,
-    modes: *const VideoMode
+    modes: *const *const VideoMode
 }
 
 impl Framebuffer {
-    pub fn get_modes(&self) -> &[VideoMode] {
+    fn get_modes(&self) -> &[*const VideoMode] {
         unsafe {
             from_raw_parts(self.modes, self.mode_count as usize)
+        }
+    }
+
+    pub fn get_mode(&self, mode: usize) -> Option<&VideoMode> {
+        if (0..self.mode_count).contains(&(mode as u64)) {
+            unsafe {
+                self.get_modes()[mode].as_ref()
+            }
+        } else {
+            None
         }
     }
 }
