@@ -1,17 +1,19 @@
-use core::slice;
-use core::str::from_utf8;
+pub struct PointerSlice<T: 'static> {
+    inner: &'static [*const T],
+}
 
-pub fn null_terminated_string(ptr: *const u8) -> Option<&'static str> {
-    let mut size: usize = 0;
-    //determine the size of the u8 slice
-    loop {
-        unsafe {
-            if ptr.add(size).read() == 0 {
-                break;
-            }
-            size += 1;
-        }
+impl<T> From<&'static [*const T]> for PointerSlice<T> {
+    fn from(slice: &'static [*const T]) -> Self {
+        Self { inner: slice }
     }
-    let char_slice = unsafe { slice::from_raw_parts(ptr, size) };
-    from_utf8(char_slice).map_or(None, |s| Some(s))
+}
+
+impl<T: 'static> PointerSlice<T> {
+    pub fn iter(&self) -> impl Iterator<Item = &T> {
+        self.inner.iter().map(|&ptr| unsafe { &*ptr })
+    }
+
+    pub fn get(&self, index: usize) -> Option<&T> {
+        self.inner.get(index).map(|&ptr| unsafe { &*ptr })
+    }
 }
