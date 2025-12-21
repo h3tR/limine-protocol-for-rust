@@ -12,7 +12,7 @@ const REVISION: u64 = 4;
 
 #[used]
 #[unsafe(link_section = ".limine_reqs")]
-static LIMINE_BASE_REVISION: [u64; 4] = use_base_revision(4);
+static LIMINE_BASE_REVISION: [u64; 4] = use_base_revision(REVISION);
 
 #[used]
 #[unsafe(link_section = ".limine_req_start")]
