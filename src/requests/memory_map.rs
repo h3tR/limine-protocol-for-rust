@@ -53,7 +53,7 @@ impl MemoryRegionInfo {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Debug)]
 pub enum MemoryRegionType {
     Usable,
     Reserved,
