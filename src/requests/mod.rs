@@ -1,6 +1,7 @@
 pub mod memory_map;
 pub mod framebuffer;
 pub mod bootloader_info;
+pub mod hhdm;
 
 ///Implements [LimineRequest] for $req. Requires \$req to have a resp field of the type core::mem::MaybeUninit\<usize\>.
 #[macro_export]
