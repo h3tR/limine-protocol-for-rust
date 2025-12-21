@@ -1,7 +1,6 @@
 # Limine Protocol for Rust
 [![Crates.io](https://img.shields.io/crates/v/limine-protocol-for-rust)](https://crates.io/crates/limine-protocol-for-rust)
-[![docs.rs](https://img.shields.io/badge/docs.rs-documentation-green.svg)](https://docs.rs/limine-protocol-for-rust)
-<br>
+[![docs.rs](https://img.shields.io/badge/docs.rs-documentation-green.svg)](https://docs.rs/limine-protocol-for-rust)  
 This crate implements a couple of utilities for making something compatible with the Limine Boot Protocol.
 It serves as an equivalent to the *'limine.h'* file, along with some extra utilities for making response retrieval and reading provided data easier.
 
