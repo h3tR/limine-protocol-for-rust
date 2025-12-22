@@ -1,3 +1,5 @@
+//![Memory Map Feature](https://codeberg.org/Limine/limine-protocol/src/branch/trunk/PROTOCOL.md#memory-map-feature)
+
 use crate::requests::LimineRequest;
 use core::mem::MaybeUninit;
 use core::slice::from_raw_parts;

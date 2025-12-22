@@ -1,3 +1,5 @@
+
+//! [Bootloader Info Feature](https://codeberg.org/Limine/limine-protocol/src/branch/trunk/PROTOCOL.md#bootloader-info-feature)
 use crate::requests::LimineRequest;
 use core::mem::MaybeUninit;
 use crate::{impl_liminine_req, LimineReqId};

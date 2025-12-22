@@ -1,3 +1,5 @@
+//! [Date at Boot Feature](https://codeberg.org/Limine/limine-protocol/src/branch/trunk/PROTOCOL.md#date-at-boot-feature)
+
 use crate::requests::LimineRequest;
 use core::mem::MaybeUninit;
 use crate::{impl_liminine_req, LimineReqId};
@@ -25,5 +27,6 @@ impl_liminine_req!(DateAtBootRequest, DateAtBootResponse);
 #[derive(Copy, Clone)]
 pub struct DateAtBootResponse {
     revision: u64,
+    ///Unix timestamp
     pub timestamp: u64
 }

@@ -1,3 +1,5 @@
+//![Higher Half Direct Map Feature](https://codeberg.org/Limine/limine-protocol/src/branch/trunk/PROTOCOL.md#hhdm-higher-half-direct-map-feature)
+
 use crate::requests::LimineRequest;
 use core::mem::MaybeUninit;
 use crate::{impl_liminine_req, LimineReqId};

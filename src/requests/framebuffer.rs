@@ -1,3 +1,5 @@
+//![Framebuffer Feature](https://codeberg.org/Limine/limine-protocol/src/branch/trunk/PROTOCOL.md#framebuffer-feature)
+
 use crate::requests::LimineRequest;
 use core::mem::MaybeUninit;
 use core::slice::{from_raw_parts};
@@ -76,15 +78,15 @@ impl Framebuffer {
 #[repr(C, align(8))]
 #[derive(Copy, Clone)]
 pub struct VideoMode {
-    pitch: u64,
-    width: u64,
-    height: u64,
-    bpp: u16,
-    memory_model: u8,
-    red_mask_size: u8,
-    red_mask_shift: u8,
-    green_mask_size: u8,
-    green_mask_shift: u8,
-    blue_mask_size: u8,
-    blue_mask_shift: u8,
+    pub pitch: u64,
+    pub width: u64,
+    pub height: u64,
+    pub bpp: u16,
+    pub memory_model: u8,
+    pub red_mask_size: u8,
+    pub red_mask_shift: u8,
+    pub green_mask_size: u8,
+    pub green_mask_shift: u8,
+    pub blue_mask_size: u8,
+    pub blue_mask_shift: u8,
 }
